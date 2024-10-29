@@ -1,0 +1,155 @@
+.products {
+
+    /* .products__container */
+
+    &__container {
+        position: relative;
+        z-index: 1;
+        padding-top: toRem(80);
+        padding-bottom: toRem(40);
+        display: flex;
+        flex-direction: column;
+        @include adaptiveValue("gap", 80, 40, 0, $containerWidth, 767.98);
+    }
+
+    /* .products__article */
+
+    &__article {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* .products__decor */
+
+    &__decor {
+        max-width: toRem(1000);
+        width: 100%;
+        height: auto;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        &--left {
+            position: absolute;
+            @include adaptiveValue("top", -150, 150, 0, $containerWidth, 320);
+            @include adaptiveValue("left", -390, -100, 0, 1920, 320);
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        &--right {
+            position: absolute;
+            @include adaptiveValue("bottom", -730, -1500, 0, $containerWidth, 767.98);
+            @include adaptiveValue("right", -390, -100, 0, $containerWidth, 767.98);
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    }
+}
+
+.article {
+    display: flex;
+    gap: toRem(47);
+
+    @media (max-width: $mobile) {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        &--reverse {
+            flex-direction: column-reverse;
+        }
+        
+    }
+
+		/* .article__image */
+
+		&__image {
+            flex: 1 1 toRem(570);
+            max-width: toRem(570);
+            width: 100%;
+            height: auto;
+            border-radius: toRem(16);
+            border-bottom-left-radius: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.8);
+            transform-origin: left;
+            transition: transform 0.8s, opacity 0.3s;
+
+            &._watcher-view {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            @media (max-width: $mobile) {
+                flex: 1 1 100%;
+                max-width: none;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                aspect-ratio: 570 / 616;
+
+                @media (max-width: $mobile) {
+                    aspect-ratio: 1 / 1;
+                }
+            }
+		}
+
+		/* .article__body */
+
+		&__body {
+            display: flex;
+            flex-direction: column;
+            gap: toRem(20);
+            flex: 1 1 toRem(523);
+            max-width: toRem(523);
+            width: 100%;
+            opacity: 0;
+            transform: scale(0.8);
+            transform-origin: right;
+            transition: all 1s ease-in-out 0.5s;
+
+            &._watcher-view {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            @media (max-width: $mobile) {
+                flex: 1 1 100%;
+                max-width: none;
+            }
+		}
+
+		/* .article__title */
+
+		&__title {
+            margin-bottom: toRem(20);
+		}
+
+		/* .article__text */
+
+		&__text {
+
+            p {
+                color: $textColor;
+                line-height: math.div(30, 16);
+
+                @media (max-width: $mobile) {
+                    line-height: math.div(28, 16);
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: toRem(20);
+                }
+            }
+		}
+}

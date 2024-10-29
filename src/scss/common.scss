@@ -1,0 +1,112 @@
+// Заголовки, загальні БЕМ блоки та інше...
+
+.title {
+    font-family: $fontFamily2;
+    @include adaptiveValue("font-size", 48, 34);
+    line-height: math.div(50, 48);
+    font-weight: 700;
+
+    span {
+        display: inline-block;
+    }
+}
+
+.title-footer {
+    font-family: $fontFamily2;
+    font-weight: 500;
+    font-size: toRem(20);
+    line-height: math.div(30, 20);
+}
+
+.button {
+    font-family: $fontFamily2;
+    font-size: toRem(14);
+    line-height: math.div(30, 14);
+    font-weight: 500;
+    text-align: center;
+    padding: toRem(8) toRem(24);
+    border-radius: toRem(8);
+    max-width: toRem(130);
+    width: 100%;
+    transition: all 0.3s ease 0s;
+    border: toRem(1) solid $blueColor;
+    color: $blueColor;
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: $white;
+            color: $blueColor;
+        }
+    }
+
+    &--header {
+
+        @media (max-width: $mobile) {
+            font-size: toRem(20);
+            max-width: toRem(170);
+        }
+    }
+
+    &--blue {
+        color: $white;
+        background-color: $blueColor;
+        border: toRem(1) solid $blueColor;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: $white;
+                color: $blueColor;
+            }
+        }
+    }
+
+    &--accent {
+        color: $accentColor;
+        background-color: $white;
+        border: toRem(1) solid $accentColor;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: $accentColor;
+                color: $white;
+            }
+        }
+    }
+}
+
+.button-up {
+    width: toRem(50);
+    height: toRem(50);
+    background-color: rgba(107, 119, 229, 0.5);
+    position: fixed;
+    right: toRem(15);
+    border: 2px solid #6B77E5;
+    border-radius: toRem(10);
+    opacity: 0;
+    transition: all 0.2s linear;
+    z-index: 100;
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: rgba(107, 119, 229, 1);
+            transform: translateY(toRem(-10));
+        }
+    }
+
+    @media (max-width: $mobile) {
+        transform: scale(0.9);
+        
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: toRem(25);
+        height: toRem(25);
+        border-top: 2px solid $white;
+        border-left: 2px solid $white;
+        top: toRem(20);
+        right: toRem(10);
+        transform: rotate(45deg);
+    }
+}

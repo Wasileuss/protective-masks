@@ -1,0 +1,304 @@
+.hero {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $mainBgColor;
+        z-index: -1;
+    }
+
+    /* .hero__container */
+
+    &__container {
+        @include adaptiveValue("padding-top", 50, 20, 0, $containerWidth, 320);
+        @include adaptiveValue("padding-bottom", 50, 20, 0, $containerWidth, 320);
+    }
+
+    /* .hero__body */
+
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: toRem(30);
+
+        @media (max-width: $mobile) {
+            flex-direction: column;
+            min-height: 100vh;
+            height: max-content;
+        }
+    }
+
+    /* .hero__info */
+
+    &__info {
+        position: relative;
+        z-index: 2;
+        @include adaptiveValue("max-width", 555, 180, 0, 1440, 1024);
+        width: 100%;
+        flex: 0 1 toRem(555);
+        // max-width: toRem(555);
+        overflow: hidden;
+
+        @media (max-width: 1250px) {
+            max-width: 100%;
+        }
+
+        @media (max-width: $mobile) {
+            max-width: none;
+            flex: 1 1 100%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    /* .hero__content */
+
+    &__content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        transform: translateX(100%);
+        opacity: 0;
+        animation: hero-text 1.5s forwards;
+
+        @media (max-width: $mobile) {
+            padding-bottom: toRem(100);
+            
+            @media (orientation: landscape) {
+                padding-bottom: toRem(150);
+            }
+        }
+
+        @keyframes hero-text {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    }
+
+    /* .hero__label */
+
+    &__label {
+        font-size: toRem(14);
+        font-weight: 500;
+        line-height: 1.5;
+        color: $accentColor;
+        @include adaptiveValue("margin-bottom", 30, 15, 0, $containerWidth, 320);
+
+        @media (max-width: $mobile) {
+            background-color: $accentColor;
+            color: $white;
+            width: fit-content;
+            padding: toRem(2) toRem(7);
+            border-radius: toRem(5);
+        }
+    }
+
+    /* .hero__title */
+
+    &__title {
+        font-family: $fontFamily2;
+        @include adaptiveValue("font-size", 72, 42, 0, 1440, 767.98);
+        line-height: 1.14;
+        font-weight: 700;
+        @include adaptiveValue("margin-bottom", 40, 15, 0, $containerWidth, 320);
+
+        span {
+            display: inline-block;
+        }
+    }
+
+    /* .hero__text */
+
+    &__text {
+        @include adaptiveValue("margin-bottom", 55, 20, 0, $containerWidth, 320);
+
+        p {
+            color: #575C74;
+            line-height: 1.5;
+
+            @media (max-width: $mobile) {
+                color: $black;
+            }
+
+            &:not(:last-child) {
+                margin-bottom: toRem(10);
+            }
+        }
+    }
+
+    /* .hero__buttons */
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        gap: toRem(20);
+
+        @media (max-width: $mobile) {
+            justify-content: center;
+        }
+    }
+
+    /* .hero__button */
+
+    &__button {
+    }
+
+    /* .hero__button--blue */
+
+    &__button--blue {
+    }
+
+    /* .hero__button--accent */
+
+    &__button--accent {
+    }
+
+    /* .hero__images */
+
+    &__images {
+        
+        @media (min-width: $mobile) {
+            position: relative;
+        }
+
+        @media (max-width: $mobile) {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    /* .hero__image */
+
+    &__image {
+        z-index: 1;
+        max-width: toRem(496);
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        border-radius: toRem(16);
+        border-bottom-left-radius: 0;
+
+        @media (orientation: landscape) {
+            // min-height: 100%;
+        }
+        
+        @media (min-width: $mobile) {
+            position: relative;
+        }
+
+        @media (max-width: $mobile) {
+            max-width: none;
+            border-radius: 0;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: toRem(-90);
+                right: 0;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.6);
+
+                @media (orientation: landscape) {
+                    // min-height: fit-content;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            aspect-ratio: 496 / 744;
+            transform: translateX(-100%);
+            opacity: 0;
+            animation: hero-image 2s forwards;
+    
+            @keyframes hero-image {
+                0% {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            @media (max-width: $mobile) {
+                position: absolute;
+                top: toRem(-90);
+                left: 0;
+                width: 100%;
+                // height: 100vh;
+                // height: 100%;
+                object-fit: cover;
+                object-position: top;
+                z-index: -1;
+
+                @media (orientation: landscape) {
+                    object-position: top;
+                }
+
+                // @media (orientation: portrait) {
+                //     height: 100vh;
+                // }
+            }
+        }
+    }
+
+    /* .hero__bg */
+
+    &__bg {
+        position: absolute;
+        @include adaptiveValue("bottom", 0, -70, 0, 1140, 768);
+        @include adaptiveValue("right", -400, -40, 0, 1440, 1140);
+        border-bottom-left-radius: toRem(150);
+        z-index: 0;
+        width: toRem(927);
+        height: auto;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            aspect-ratio: 927 / 891;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+            width: toRem(927);
+            height: 100%;
+            aspect-ratio: 927 / 891;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: $mobile) {
+            display: none;
+        }
+
+    }
+}

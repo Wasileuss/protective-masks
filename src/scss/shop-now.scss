@@ -1,0 +1,44 @@
+.shop-now {
+
+    /* .shop-now__container */
+
+    &__container {
+        padding-top: toRem(50);
+        padding-bottom: toRem(50);
+        @include adaptiveValue("margin-bottom", 70, 40, 0, $containerWidth, 767.98);
+    }
+
+    /* .shop-now__body */
+
+    &__body {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        max-width: toRem(750);
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /* .shop-now__title */
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 30, 20, 0, $containerWidth, 767.98);
+        text-align: center;
+    }
+
+    /* .shop-now__text */
+
+    &__text {
+        margin-bottom: toRem(35);
+
+        p {
+            line-height: math.div(30, 16);
+            text-align: center;
+        }
+    }
+
+    /* .shop-now__button */
+
+    &__button {
+    }
+}
